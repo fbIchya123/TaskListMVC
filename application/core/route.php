@@ -4,7 +4,7 @@ class Route {
     
     static function start(){
 
-        $controller_name = 'Main';
+        $controller_name = 'Register';
         $action_name = 'index';
 
         $routes = explode('/', $_SERVER['REQUEST_URI']);
@@ -59,13 +59,13 @@ class Route {
 
     }
     
-    function ErrorPage404(){
+    /*function ErrorPage404(){
 
         $host = 'http://' . $_SERVER['HTTP_HOST'] . '/';
         header('HTTP/1.1 404 Not Found');
         header("Status: 404 Not Found");
         header('Location:' . $host . '404');
-    }
+    }*/
 
 
 }
