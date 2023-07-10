@@ -13,8 +13,7 @@ class Controller_Register extends Controller{
     }
 
     function action_login(){
-        $login = $_POST['login'];
-        $password = $_POST['password'];
-        echo DataBase::log_pass($login, $password);
+        $this->model->login();
+        $this->view->generate('view_main.php', 'template_view.php');
     }
 }

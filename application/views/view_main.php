@@ -1,14 +1,13 @@
 <?php
-//session_start();
-//include 'connect_db.php';
+session_start();
 ?>
 
-        <form action="exit.php">
+        <form action="./" method="post">
             <button type="submit">Exit</button>
         </form>
         <h1>
             <?php
-            //echo $_SESSION['user_name'];
+            echo $_SESSION['user_name'];
             ?>
         </h1>
 
