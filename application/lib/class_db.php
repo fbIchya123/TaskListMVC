@@ -3,11 +3,7 @@ include 'connect_db.php';
 
 class DataBase{
 
-    static function log_pass($login, $password){
-
-        return "Login: " . $login . "<br>Password: " . $password;
-    }
-
+    //Запрос на получение данных пользователя
     static function get_user_data($login){
 
         global $pdo;
@@ -16,6 +12,7 @@ class DataBase{
         return $query_check_reg_user->fetch(PDO::FETCH_LAZY);
     }
 
+    //Запрос на добавление нового пользователя
     static function insert_user($login, $password){
 
         global $pdo;
@@ -24,6 +21,7 @@ class DataBase{
         $query_add_user->execute([':name' => $login, ':password' => $password_hash, ':created_at' => date("Y-m-d")]);
     }
 
+    //Запрос на получение данных данных всех тасков пользователя
     static function get_user_task_list(){
 
         global $pdo;
@@ -33,13 +31,15 @@ class DataBase{
         return $data;
     }
     
+    //Запрос на добавление нового таска
     static function add_task($user_id, $description){
 
             global $pdo;
             $query = $pdo->prepare("INSERT INTO `tasks` (user_id, description, created_at, status) VALUES (:user_id, :description, :created_at, 'READY')"); 
             $query->execute([':user_id' => $user_id, ':description' => $description, ':created_at' => date("Y-m-d")]);
         }
-
+    
+    //Запрос на удаление всех тасков пользователя
     static function remove_all($user_id){
 
         global $pdo;
@@ -47,6 +47,7 @@ class DataBase{
         $query->execute([':user_id' => $user_id]);
     }
 
+    //Запрос на изменение статусов на "UNREADY" всех тасков пользователя
     static function change_all_status($user_id){
         
         global $pdo;
@@ -54,6 +55,7 @@ class DataBase{
         $query->execute(['status' => 'UNREADY', ':user_id' => $user_id]);
     }
 
+    //Запрос на удаление одного таска пользователя
     static function delete($user_id){
 
         global $pdo;
@@ -61,6 +63,7 @@ class DataBase{
         $query->execute([':id' => $_POST['delete'], ':user_id' => $user_id]);
     }
 
+    //Запрос на получение статуса таска
     static function get_status($user_id){
         
         global $pdo;
@@ -69,6 +72,7 @@ class DataBase{
         return $query->fetch(PDO::FETCH_LAZY)->status;
     }
 
+    //Запрос на внесение изменения статуса в таск
     static function insert_status($status){
 
         global $pdo;
@@ -76,9 +80,3 @@ class DataBase{
         $query->execute([':id' => $_POST['status'], ':status' => $status]);
     }
 }
-/*
-    $login = $_POST['login'];
-    $password = $_POST['password'];
-    
-    $created_at = ;
-*/

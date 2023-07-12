@@ -2,6 +2,7 @@
 session_start();
 class Model_Register extends Model{
 
+    //Функция аутентификации
     function auth($row){
         
         $_SESSION['user_id'] = $row->id;
@@ -9,6 +10,7 @@ class Model_Register extends Model{
         header("Location: /TaskListMVC/main");
     }
 
+    //Функция регистрации/авторизации
     function login(){
 
         //Проверка на пустые поля

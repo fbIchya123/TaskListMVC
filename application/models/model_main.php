@@ -2,12 +2,14 @@
 session_start();
 class Model_Main extends Model{
 
+    //Функция генерации списка тасков пользователя по id пользователя
     function generateTaskList(){
 
         return DataBase::get_user_task_list();
         //return $data = [['id' => 1234, 'description' => "TEST", 'status' => "READY"]];
     }
     
+    //Функция изменения всех тасков пользователя по id пользователя
     function change_all_tasks(){
         global $pdo;
         $user_id = $_SESSION['user_id'];
@@ -33,6 +35,7 @@ class Model_Main extends Model{
         }
     }
     
+    //Функция изменения одного таска по его id и id пользователя
     function change_one_task(){
         
         $user_id = $_SESSION['user_id'];
@@ -70,6 +73,7 @@ class Model_Main extends Model{
         }
     }
 
+    //Функция добавления таска
     function add_task(){
 
         if (isset($_SESSION['user_id'])){
@@ -82,6 +86,7 @@ class Model_Main extends Model{
         }
     }
 
+    //Функция выхода из аккаунта
     function exit(){
     
         $_SESSION['user_id'] = NULL;

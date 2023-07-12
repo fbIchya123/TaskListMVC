@@ -13,24 +13,28 @@ class Controller_Main extends Controller{
         $this->view->generate('view_main.php', 'template_view.php', $all_user_tasks_data);
     }
 
+    //Добавление таска
     function action_add_task(){
 
         $this->model->add_task();
         //$this->view->generate('view_main.php', 'template_view.php');
     }
 
+    //Изменение всех тасков
     function action_change_all_tasks(){
 
         $this->model->change_all_tasks();
         //$this->view->generate('view_main.php', 'template_view.php');
     }
 
+    //Изменение одного таска
     function action_change_one_task(){
 
         $this->model->change_one_task();
         //$this->view->generate('view_main.php', 'template_view.php');
     }
 
+    //Выход из аккаунта
     function action_exit(){
 
         $this->model->exit();

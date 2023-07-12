@@ -12,6 +12,7 @@ class Controller_Register extends Controller{
         $this->view->generate('view_register.php', 'template_view.php');
     }
 
+    //Регистрация/авторизация
     function action_login(){
         $this->model->login();
         $this->view->generate('view_main.php', 'template_view.php');
