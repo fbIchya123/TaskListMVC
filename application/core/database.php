@@ -1,5 +1,5 @@
 <?php
-include 'connect_db.php';
+
 
 class DataBase{
 

@@ -1,6 +1,6 @@
 <?php
 
-class Autoloader {
+class Route {
     
     static function start(){
 
@@ -45,7 +45,7 @@ class Autoloader {
 
         } else {
             
-            Autoloader::ErrorPage404();
+            Route::ErrorPage404();
         }
 
         $controller = new $controller_name;
@@ -57,7 +57,7 @@ class Autoloader {
 
         } else {
 
-            Autoloader::ErrorPage404();
+            Route::ErrorPage404();
         }
 
 
