@@ -21,30 +21,16 @@ class Route {
             $action_name = $routes[3];
         }
 
-        //Формирование названий модели, контроллера и действия, которые будут запускаться
-        $model_name = 'Model_' . $controller_name;
+        //Формирование названий контроллера и действия, которые будут запускаться
+
         $controller_name = 'Controller_' . $controller_name;
         $action_name = 'action_' . $action_name;
 
-        $model_file = strtolower($model_name) . '.php';
-        $model_path = "application/models/" . $model_file;
+        //Проверка существования контроллера и действия, которые будут запускаться
+        $controller_path = "application/controllers/" . strtolower($controller_name) . '.php';
 
-        //Формирование пути к модели, контроллеру и действию, которые будут запускаться
-        if (file_exists($model_path)){
+        if (!file_exists($controller_path)){
 
-            include "application/models/" . $model_file;
-
-        }
-
-        $controller_file = strtolower($controller_name) . '.php';
-        $controller_path = "application/controllers/" . $controller_file;
-
-        if (file_exists($controller_path)){
-
-            include "application/controllers/" . $controller_file;
-
-        } else {
-            
             Route::ErrorPage404();
         }
 
